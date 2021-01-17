@@ -1,8 +1,11 @@
 package com.example.health360;
 
+import android.app.Notification;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.mbms.MbmsErrors;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -20,8 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner choose_meal;
-    private TextView text_meal;
+    private View decorView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,35 +38,34 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        choose_meal = findViewById(R.id.choose_meal);
-        text_meal = findViewById(R.id.text_meal);
 
-        List<String> meal = new ArrayList<>();
-        meal.add("Choose The Meal");
-        meal.add("Breakfast");
-        meal.add("Lunch");
-        meal.add("Dinner");
-        meal.add("Snack");
 
-        ArrayAdapter<String> mealAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, meal);
-        mealAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        choose_meal.setAdapter(mealAdapter);
-
-        choose_meal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        decorView = getWindow().getDecorView();
+        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String yourMeal = choose_meal.getSelectedItem().toString();
-                if (yourMeal.equals("Choose The Meal")) {
+            public void onSystemUiVisibilityChange(int visibility) {
+                if (visibility == 0){
+                    decorView.setSystemUiVisibility(hidesystembars());
                 }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
-
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus){
+            decorView.setSystemUiVisibility(hidesystembars());
+        }
+    }
+
+    private int hidesystembars(){
+        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+    }
 }

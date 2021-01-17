@@ -11,9 +11,7 @@
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/teal_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -33,84 +31,79 @@
         app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="199dp"
-        android:layout_height="57dp"
-        android:text="@string/health360"
+    <Spinner
+        android:id="@+id/choose_meal"
+        android:layout_width="224dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="164dp"
+        android:background="@drawable/bubble"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:entries="@array/meal_of_day"
+        android:padding="10dp"
         android:textAlignment="center"
-        android:textColor="#673AB7"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/enter_weight"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/enter_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="328dp"
+        android:background="@drawable/bubble"
+        android:backgroundTint="@android:color/holo_green_light"
         android:ems="10"
-        android:hint="Today's Weight (lbs)"
+        android:fontFamily="@font/dosis_semibold"
+        android:hint="@string/cur_weight"
         android:inputType="numberDecimal"
+        android:padding="12dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/enter_calories"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/enter_calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="240dp"
+        android:background="@drawable/bubble"
+        android:backgroundTint="@android:color/holo_green_light"
         android:ems="10"
-        android:hint="Calories From Meal"
+        android:fontFamily="@font/dosis_semibold"
+        android:hint="@string/calories_from_meal"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
+        android:padding="12dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/choose_meal"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        android:importantForAutofill="no" />
-
-    <Spinner
-        android:id="@+id/choose_meal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/enter_calories"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
-        app:layout_constraintVertical_bias="0.62" />
-
-    <TextView
-        android:id="@+id/text_meal"
-        android:layout_width="213dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_meal" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
+        android:layout_marginBottom="76dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:fontFamily="@font/dosis_semibold"
+        android:text="ENTER"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="297dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_meal"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
+        app:srcCompat="@drawable/logo" />
 
 </android.support.constraint.ConstraintLayout>

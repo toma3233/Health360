@@ -4,4 +4,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="health360">Health360</string>
+    <string name="calories_from_meal"><b>Calories From Meal</b></string>
+    <string name="cur_weight"><b>Current Weight (lbs)</b></string>
+    <string-array name="meal_of_day">
+        <item>Select</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snack</item>
+    </string-array>
 </resources>
